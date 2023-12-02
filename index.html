@@ -11,7 +11,7 @@
         <div class="input-container">
             <textarea id="inputText" placeholder="Paste your TXT data here"></textarea>
             <input type="file" id="fileInput" accept=".txt" />
-            <label for="fileInput">Choose TXT File</label>
+            <label for="fileInput">Import TXT File</label>
             <button onclick="convertToCSV()">Convert</button>
             <button id="pasteButton" onclick="pasteFromClipboard()">Paste</button>
         </div>
@@ -19,7 +19,7 @@
             <textarea id="outputText" placeholder="Converted CSV data" readonly></textarea>
             <button onclick="downloadCSV()">Download CSV</button>
             <button onclick="copyToClipboard('outputText')">Copy Output</button>
-            <button onclick="clearPage()">Clear</button>
+            <button id="clearButton" onclick="clearPage()">Clear</button>
         </div>
     </div>
     <script src="scripts/main.js"></script>
