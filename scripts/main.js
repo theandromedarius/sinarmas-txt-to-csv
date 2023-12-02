@@ -7,13 +7,13 @@ function convertToCSV() {
   outputData.push("LATITUDE,LONGITUDE,DEPTH");
 
   for (let i = 0; i < lines.length; i++) {
-      if (lines[i].startsWith("ELEVATION=")) {
-          const depthValue = parseFloat(lines[i].replace("ELEVATION=", ""));
-          const coordinatesLine = lines[i + 1];
-          const [longitude, latitude] = coordinatesLine.split(',');
+    if (lines[i].startsWith("ELEVATION=") || lines[i].startsWith("DEPTH=")) {
+      const depthValue = parseFloat(lines[i].replace(/ELEVATION=|DEPTH=/, ""));
+      const coordinatesLine = lines[i + 1];
+      const [longitude, latitude] = coordinatesLine.split(',');
 
-          outputData.push(`${latitude},${longitude},${depthValue.toFixed(2)}`);
-      }
+      outputData.push(`${latitude},${longitude},${depthValue.toFixed(2)}`);
+    }
   }
 
   // Menetapkan hasil ke textarea outputText
@@ -68,4 +68,9 @@ function handleFileSelect(event) {
       };
       reader.readAsText(file);
   }
+}
+
+function clearPage() {
+  // Me-refresh halaman
+  location.reload();
 }
